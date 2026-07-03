@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spot Pomodoro Timer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>⏱️ Spot Pomodoro</h1>
+    </header>
+
+    <nav class="menu-bar">
+        <button onclick="showPage('timer-section')" class="menu-btn active">Home</button>
+        <button onclick="showPage('todo-section')" class="menu-btn">To-Do List</button>
+        <button onclick="showPage('settings-section')" class="menu-btn">Settings</button>
+        <button onclick="showPage('about-section')" class="menu-btn">About (Guide)</button>
+    </nav>
+
+    <main class="container">
+        
+        <section id="timer-section" class="page-section">
+            <div class="timer-display">
+                <span id="minutes">25</span>:<span id="seconds">00</span>
+            </div>
+            
+            <div class="controls">
+                <button id="start-btn">START</button>
+                <button id="pause-btn">PAUSE</button>
+                <button id="reset-btn">RESET</button>
+            </div>
+        </section>
+
+        <section id="todo-section" class="page-section hidden">
+            <h3>📝 Tasks for Today</h3>
+            <div class="todo-input-container">
+                <input type="text" id="task-input" placeholder="What are you focusing on?">
+                <button id="add-task-btn">Add</button>
+            </div>
+            <ul id="task-list" style="list-style: none; padding: 0; text-align: left;"></ul>
+        </section>
+
+        <section id="settings-section" class="page-section hidden">
+            <h3>⚙️ Time Settings</h3>
+            <div class="setting-option">
+                <label for="work-time">Work Time (Minutes): </label>
+                <input type="number" id="work-time" value="25" min="1" max="60">
+            </div>
+            <div class="setting-option">
+                <label for="break-time">Break Time (Minutes): </label>
+                <input type="number" id="break-time" value="5" min="1" max="30">
+            </div>
+        </section>
+
+        <section id="about-section" class="page-section hidden">
+            <h3>📘 How to Use?</h3>
+            <ul style="text-align: left; padding-left: 20px;">
+                <li>Choose a task you want to focus on.</li>
+                <li>Click *START* and study hard for 25 minutes.</li>
+                <li>Take a 5-minute break when the timer ends.</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <audio id="alarm-sound" src="{{ url_for('static', filename='Gaallo Thelinattunde-SenSongsMp3.Co.mp3') }}" preload="auto"></audio>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="script.js"></script>
+</body>
+</html>
